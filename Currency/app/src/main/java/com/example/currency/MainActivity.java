@@ -26,6 +26,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -189,7 +190,8 @@ public class MainActivity extends AppCompatActivity{
 
                 double fValue = Double.parseDouble(fromValue.getText().toString());
                 double tValue = fValue / exchangeRate(listCountryInfo.get(idxFromSelected).getCurrencyCode().toLowerCase(), listCountryInfo.get(idxToSelected).getCurrencyCode().toLowerCase());
-                toValue.setText(Double.toString(tValue));
+                DecimalFormat format = new DecimalFormat("###,##0.000");
+                toValue.setText(format.format(tValue));
             } else {
                 Toast.makeText(MainActivity.this,
                         "Currency code re-selection",
